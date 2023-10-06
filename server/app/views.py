@@ -6,7 +6,7 @@ from .forms import ClientForm
 
 class HomePage(ListView):
     model = CarouselModel
-    template_name = "index.html"
+    template_name = "home_page.html"
     context_object_name = "carousel"
 
 
