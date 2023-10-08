@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from .models import Client, CarouselModel
+from .models import Client, CarouselModel, ExampleWorkModel
+
+
+class ExampleAdmin(admin.ModelAdmin):
+    list_display = ["ceiling_type", "description"]
 
 
 class ClientAdmin(admin.ModelAdmin):
@@ -18,5 +22,6 @@ class CarouselAdmin(admin.ModelAdmin):
     list_display = ["name", "description", "image"]
 
 
+admin.site.register(ExampleWorkModel, ExampleAdmin)
 admin.site.register(CarouselModel, CarouselAdmin)
 admin.site.register(Client, ClientAdmin)

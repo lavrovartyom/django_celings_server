@@ -3,6 +3,15 @@ from django.db import models
 from django.utils import timezone
 
 
+class ExampleWorkModel(models.Model):
+    """Модель примеров работ"""
+
+    image = models.ImageField(upload_to="images", null=False, blank=False)
+    ceiling_type = models.CharField(max_length=150, blank=False, help_text="Тип натяжного потолка")
+    description = models.TextField(help_text="Описание")
+    objects = models.Manager()
+
+
 class Client(models.Model):
     """Модель клиента/заявки"""
 
