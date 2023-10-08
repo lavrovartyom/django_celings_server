@@ -1,8 +1,7 @@
 from django.views import generic
 from .models import CarouselModel, ExampleWorkModel
-from django.shortcuts import render, HttpResponseRedirect
 from .forms import ClientForm
-from django.shortcuts import redirect
+from django.http import JsonResponse
 
 
 class HomePage(generic.TemplateView):
@@ -13,20 +12,18 @@ class HomePage(generic.TemplateView):
         context['carousel'] = CarouselModel.objects.all()
         context['form'] = ClientForm()
         context['examples'] = ExampleWorkModel.objects.all()
-        context['success'] = self.request.session.pop('success', False)
         return context
 
     def form_valid(self, form):
         form.save()
-        self.request.session['success'] = True
-        return redirect('home')
+        return JsonResponse({'success': True})
 
     def form_invalid(self, form):
-        return self.render_to_response(self.get_context_data(form=form))
+        return JsonResponse({'success': False, 'errors': form.errors})
 
     def post(self, request, *args, **kwargs):
         form = ClientForm(request.POST)
         if form.is_valid():
             return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+
+        return self.form_invalid(form)
