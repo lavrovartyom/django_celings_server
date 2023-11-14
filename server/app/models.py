@@ -4,16 +4,22 @@ from django.utils import timezone
 
 
 class ExampleWorkModel(models.Model):
-    """Модель примеров работ"""
+    """
+    Модель примеров работ
+    """
 
     image = models.ImageField(upload_to="images", null=False, blank=False)
-    ceiling_type = models.CharField(max_length=150, blank=False, help_text="Тип натяжного потолка")
+    ceiling_type = models.CharField(
+        max_length=150, blank=False, help_text="Тип натяжного потолка"
+    )
     description = models.TextField(help_text="Описание")
     objects = models.Manager()
 
 
 class Client(models.Model):
-    """Модель клиента/заявки"""
+    """
+    Модель клиента/заявки
+    """
 
     full_name = models.CharField(max_length=300, blank=False, help_text="ФИО")
     phone_number = models.CharField(

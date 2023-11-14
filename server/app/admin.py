@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Client, CarouselModel, ExampleWorkModel
+from .models import CarouselModel, Client, ExampleWorkModel
 
 
 class ExampleAdmin(admin.ModelAdmin):
