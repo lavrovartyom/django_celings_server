@@ -4,10 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Натяжные потолки{% endblock %}</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+  <title>Натяжные потолки</title>
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
   <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 </head>
@@ -15,7 +12,7 @@
   <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'logo1.png' %}" alt="Логотип" width="110" height="30">
+        <img src="{% static 'logo1.png' %}" alt="Логотип компании ПОТОЛОК.PRO" width="110" height="30">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,10 +23,10 @@
             <a class="nav-link active" aria-current="page" href="#">Натяжные потолки в Екатеринбурге</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Отзывы</a>
+            <a class="nav-link" href="#">Отзывы</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Контакты</a>
+            <a class="nav-link" href="#">Контакты</a>
           </li>
         </ul>
       </div>
@@ -46,12 +43,14 @@
       <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
         <li class="nav-item">
           <a href="https://vk.com/club222748071" class="navbar-brand" target="_blank" title="Наше сообщество в VK">
-            <img src="{% static 'vk.png' %}" alt="Группа в VK" width="30" height="30">
+            <img src="{% static 'vk.png' %}" alt="Группа в VK" width="30" height="30" crossorigin="anonymous">
           </a>
         </li>
       </ul>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js" crossorigin="anonymous"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
   <script src="{% static 'js/custom.js' %}"></script>
 </body>
