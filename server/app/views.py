@@ -6,8 +6,6 @@ from .models import CarouselModel, ExampleWorkModel
 
 
 class HomePage(generic.TemplateView):
-    """Представление на"""
-
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
@@ -18,7 +16,7 @@ class HomePage(generic.TemplateView):
 
         return context
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = ClientForm(request.POST)
 
         if form.is_valid():

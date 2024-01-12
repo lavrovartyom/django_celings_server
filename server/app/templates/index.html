@@ -10,7 +10,7 @@
  <div class="carousel-inner">
   {% for slide in carousel %}
   <div class="carousel-item {% if forloop.first %}active{% endif %}">
-   <img alt="carousel image" class="d-block w-100" src="{{ slide.image.url }}"/>
+   <img alt="carousel image" class="d-block w-100" src="{{ slide.image.url }}"  width="10" height="3500"/>
    <div class="carousel-caption d-none d-md-block">
     <h5>
      {{ slide.name }}

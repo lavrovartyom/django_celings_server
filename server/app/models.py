@@ -4,9 +4,7 @@ from django.utils import timezone
 
 
 class ExampleWorkModel(models.Model):
-    """
-    Модель примеров работ
-    """
+    """Модель примеров работ."""
 
     image = models.ImageField(upload_to="images", null=False, blank=False)
     ceiling_type = models.CharField(
@@ -17,9 +15,7 @@ class ExampleWorkModel(models.Model):
 
 
 class Client(models.Model):
-    """
-    Модель клиента/заявки
-    """
+    """Модель клиента/заявки."""
 
     full_name = models.CharField(max_length=300, blank=False, help_text="ФИО")
     phone_number = models.CharField(
@@ -40,7 +36,7 @@ class Client(models.Model):
 
 
 class CarouselModel(models.Model):
-    """Модель слайдера"""
+    """Модель слайдера."""
 
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
