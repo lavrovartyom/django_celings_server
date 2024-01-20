@@ -45,3 +45,19 @@ class HomePageTest(TestCase):
 
         # Проверяем, что объект не был создан из-за ошибки валидации
         self.assertFalse(Client.objects.filter(full_name="Test User").exists())
+
+
+class AjaxTest(TestCase):
+    def test_ajax_request(self):
+        post_data = {
+            "full_name": "Test User",
+            "phone_number": "+7(903)-123-45-67",
+            "address": "Советская 57",
+            "comment": "Домофон не работает",
+        }
+        response = self.client.post(
+            reverse("app:home"), post_data, HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"success": True})
