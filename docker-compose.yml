@@ -1,9 +1,20 @@
+version: '3'
+
 services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./server/staticfiles:/static
+      - ./server/media:/media
+    depends_on:
+      - web-app
+
   web-app:
     build:
       context: .
-    ports:
-      - "8000:8000"
     volumes:
       - ./server:/server
     environment:
@@ -11,12 +22,13 @@ services:
       - DB_NAME=db_name
       - DB_USER=db_user
       - DB_PASS=pass
-
-    command: > 
-      sh -c "python manage.py runserver 0.0.0.0:8000"
-      
     depends_on:
       - database
+    expose:
+      - "8000"
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             gunicorn project.wsgi:application --bind 0.0.0.0:8000"
 
   database:
     image: postgres:14.6-alpine
