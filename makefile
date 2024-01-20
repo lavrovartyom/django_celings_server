@@ -7,8 +7,8 @@ migrations:
 migrate:
     docker-compose run web-app python manage.py migrate
 
-# superuser:
-#     docker-compose exec web-app python manage.py createsuperuser
+superuser:
+    docker-compose exec web-app python manage.py createsuperuser
 
 run:
     docker-compose up
