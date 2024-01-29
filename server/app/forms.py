@@ -15,7 +15,7 @@ class ClientForm(forms.ModelForm):
             "full_name": forms.TextInput(attrs={"placeholder": "Ваше имя"}),
             "phone_number": forms.TextInput(
                 attrs={
-                    "placeholder": "+7(XXX)-XXX-XX-XX",
+                    "placeholder": "+7(xxx)-xxx-xx-xx",
                     "type": "tel",
                     "autocomplete": "tel",
                 }

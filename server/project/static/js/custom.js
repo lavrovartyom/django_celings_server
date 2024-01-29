@@ -1,3 +1,4 @@
+// Маска номера телефона в форме заявки
 document.addEventListener('DOMContentLoaded', function () {
   var phoneInput = document.getElementById('id_phone_number');
   var maskOptions = {
@@ -7,14 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// Функция для валидации формы заявки
 document.addEventListener('DOMContentLoaded', function () {
     var submitBtn = document.getElementById('submit-id-submit');
+    var form = document.getElementById('form');
 
     submitBtn.addEventListener('click', function (e) {
         e.preventDefault();
 
         var xhr = new XMLHttpRequest();
-        var formData = new FormData(document.getElementById('form'));
+        var formData = new FormData(form);
 
         xhr.open('POST', '/');
         xhr.setRequestHeader('X-CSRFToken', formData.get('csrfmiddlewaretoken'));
@@ -25,9 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (response.success) {
                     new bootstrap.Modal(document.getElementById('successModal')).show();
-                    document.getElementById('form').reset();
+                    form.reset();
                 } else {
                     // Обработка ошибок
+                    form.reportValidity(); // Это для вызова стандартной валидации
                 }
             }
         };
@@ -35,5 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.send(formData);
     });
 });
+
 
 
