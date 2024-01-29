@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     new bootstrap.Modal(document.getElementById('successModal')).show();
                     form.reset();
                 } else {
-                    // Обработка ошибок
-                    form.reportValidity(); // Это для вызова стандартной валидации
+                    form.reportValidity();
                 }
             }
         };
