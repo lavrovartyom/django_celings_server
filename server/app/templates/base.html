@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/imask"></script>
-  <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -29,8 +29,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Контакты</a>
-          </li>
         </ul>
+          <a class="btn btn-success" onclick="document.getElementById('form').scrollIntoView();">Записаться на замер</a>
+
       </div>
     </div>
   </nav>
@@ -44,9 +45,12 @@
       </div>
       <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
         <li class="nav-item">
-          <a href="https://vk.com/club222748071" class="navbar-brand" target="_blank" title="Наше сообщество в VK">
-            <img src="{% static 'vk.png' %}" alt="Группа в VK" width="30" height="30" crossorigin="anonymous">
-          </a>
+            <a href="https://www.youtube.com/@user-zn8hh9mz1u" class="navbar-brand" target="_blank" title="Наше сообщество в VK">
+                <img src="{% static 'YouTubeLogo.png' %}" alt="Канал на YouTube" width="30" height="30" crossorigin="anonymous">
+            </a>
+            <a href="https://vk.com/club222748071" class="navbar-brand" target="_blank" title="Наше сообщество в VK">
+                <img src="{% static 'vk.png' %}" alt="Группа в VK" width="30" height="30" crossorigin="anonymous">
+            </a>
         </li>
       </ul>
     </footer>
