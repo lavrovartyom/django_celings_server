@@ -14,7 +14,11 @@ class ClientForm(forms.ModelForm):
         widgets = {
             "full_name": forms.TextInput(attrs={"placeholder": "Ваше имя"}),
             "phone_number": forms.TextInput(
-                attrs={"placeholder": "+7(XXX)-XXX-XX-XX", "type": "tel"}
+                attrs={
+                    "placeholder": "+7(XXX)-XXX-XX-XX",
+                    "type": "tel",
+                    "autocomplete": "tel",
+                }
             ),
             "address": forms.TextInput(attrs={"placeholder": "Ваш адрес"}),
             "comment": forms.Textarea(attrs={"rows": 3, "placeholder": "Комментарий"}),
