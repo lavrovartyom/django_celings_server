@@ -1,137 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="carousel slide" id="carouselExampleCaptions">
- <div class="carousel-indicators">
-  {% for slide in carousel %}
-  <button %}="" aria-current="true" aria-label="Slide {{ forloop.counter }}" class="active" data-bs-slide-to="{{ forloop.counter0 }}" data-bs-target="#carouselExampleCaptions" endif="" forloop.first="" if="" type="button" {%="">
-  </button>
-  {% endfor %}
- </div>
- <div class="carousel-inner">
-  {% for slide in carousel %}
-  <div class="carousel-item {% if forloop.first %}active{% endif %}">
-   <img alt="carousel image" class="d-block w-100" src="{{ slide.image.url }}"  width="10" height="3500"/>
-   <div class="carousel-caption d-none d-md-block">
-    <h5>
-     {{ slide.name }}
-    </h5>
-    <p>
-     {{ slide.description }}
-    </p>
-   </div>
-  </div>
-  {% endfor %}
- </div>
- <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button">
-  <span aria-hidden="true" class="carousel-control-prev-icon">
-  </span>
-  <span class="visually-hidden">
-   Previous
-  </span>
- </button>
- <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button">
-  <span aria-hidden="true" class="carousel-control-next-icon">
-  </span>
-  <span class="visually-hidden">
-   Next
-  </span>
- </button>
+{% load crispy_forms_tags %}
+
+<div class="carousel slide" id="carouselExampleCaptions" style="margin-top: 65px;">
+    <div class="carousel-indicators">
+        {% for slide in carousel %}
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}"
+                class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}"
+                aria-label="Slide {{ forloop.counter }}">
+        </button>
+        {% endfor %}
+    </div>
+    <div class="carousel-inner">
+        {% for slide in carousel %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img alt="{{ slide.name }}" class="d-block w-100" src="{{ slide.image.url }}" style="height: 500px; object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{ slide.name }}</h5>
+                <p>{{ slide.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
 <div class="container mt-5 mb-5">
- <h2>
-  Примеры наших работ
- </h2>
- <div class="row row-cols-4 row-cols-md-2 g-4">
-  {% for example in examples %}
-  <div class="col">
-   <div class="card shadow mb-4 bg-body-tertiary">
-    <img alt="Example Image" class="card-img-top img-fluid" src="{{ example.image.url }}" style="width: 100%; height: 200px; object-fit: cover;"/>
-    <div class="card-body">
-     <h5 class="card-title">
-      {{ example.ceiling_type }}
-     </h5>
-     <p class="card-text">
-      {{ example.description }}
-     </p>
+    <h2>Примеры наших работ</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for example in examples %}
+        <div class="col">
+            <div class="card shadow mb-4 bg-body rounded">
+                <img alt="{{ example.ceiling_type }}" class="card-img-top img-fluid" src="{{ example.image.url }}" style="height: 200px; object-fit: cover;"/>
+                <div class="card-body">
+                    <h5 class="card-title">{{ example.ceiling_type }}</h5>
+                    <p class="card-text">{{ example.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-   </div>
-  </div>
-  {% endfor %}
- </div>
 </div>
-<div class="container mt-4 mb-4">
- <h2>
-  Заявка на замер
- </h2>
- {% if success %}
- <div class="alert alert-success" role="alert">
-  Ваша заявка была успешно отправлена.
- </div>
- {% endif %}
- <form id="form" method="POST">
-  {% csrf_token %}
-  <div class="row">
-   <div class="col-md-5 mb-3">
-    <label class="form-label" for="id_full_name">
-    </label>
-    <input class="form-control" id="id_full_name" name="full_name" placeholder="Имя" required="required" type="text"/>
-    <span class="error-message">
-    </span>
-   </div>
-  </div>
-  <div class="row">
-   <div class="col-md-5 mb-3">
-    <label class="form-label" for="phone">
-    </label>
-    <input class="form-control" id="phone" minlength="17" name="phone_number" placeholder="+7(xxx)-xxx-xx-xx" required="required" type="tel"/>
-    <span class="error-message">
-    </span>
-   </div>
-  </div>
-  <div class="row">
-   <div class="col-md-5 mb-3">
-    <label class="form-label" for="id_address">
-    </label>
-    <input class="form-control" id="id_address" name="address" placeholder="Адрес в Екатеринбурге" required="required" type="text"/>
-    <span class="error-message">
-    </span>
-   </div>
-  </div>
-  <div class="row">
-   <div class="col-md-5 mb-3">
-    <label class="form-label" for="id_comment">
-    </label>
-    <input class="form-control" id="id_comment" name="comment" placeholder="Комментарий к заявке" required="required" type="text"/>
-    <span class="error-message">
-    </span>
-   </div>
-  </div>
-  <div class="row">
-   <button class="btn btn-primary col-md-5" data-bs-target="#exampleModal" data-bs-toggle="modal" id="submit-btn" type="button">
-    Записаться на замер
-   </button>
-   <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
-    <div class="modal-dialog">
-     <div class="modal-content">
-      <div class="modal-header">
-       <h5 class="modal-title" id="exampleModalLabel">
-        Ваша заявка успешно отправлена.
-       </h5>
-       <button aria-label="Закрыть" class="btn-close" data-bs-dismiss="modal" type="button">
-       </button>
-      </div>
-      <div class="modal-body">
-       Мы свяжемся с вами в ближайшее время.
-      </div>
-      <div class="modal-footer">
-       <button class="btn btn-primary" data-bs-dismiss="modal" type="button">
-        Ок
-       </button>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
- </form>
+
+<div class="container mt-5 mb-5">
+    <h2 class="mb-3">Записаться на замер</h2>
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Ваша заявка была успешно отправлена.
+        </div>
+    {% endif %}
+    <form id="form" method="POST" action=".">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
 </div>
+
 {% endblock %}

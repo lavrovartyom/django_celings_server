@@ -8,7 +8,7 @@ class ExampleWorkModel(models.Model):
 
     image = models.ImageField(upload_to="images", null=False, blank=False)
     ceiling_type = models.CharField(
-        max_length=150, blank=False, help_text="Тип натяжного потолка"
+        max_length=150, blank=False, help_text="Тип натяжного полотна"
     )
     description = models.TextField(help_text="Описание")
     objects = models.Manager()
@@ -17,17 +17,17 @@ class ExampleWorkModel(models.Model):
 class Client(models.Model):
     """Модель клиента/заявки."""
 
-    full_name = models.CharField(max_length=300, blank=False, help_text="ФИО")
+    full_name = models.CharField(max_length=300, blank=False)
     phone_number = models.CharField(
         max_length=17,
         validators=[RegexValidator(r"^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$")],
         blank=False,
-        help_text="+7(XXX)-XXX-XX-XX",
     )
     address = models.CharField(
-        max_length=300, blank=False, help_text="Введите ваш адрес"
+        max_length=300,
+        blank=False,
     )
-    comment = models.TextField(blank=True, help_text="Комментарий к заявке")
+    comment = models.TextField(blank=True)
     application_date = models.DateTimeField(default=timezone.now, editable=False)
     objects = models.Manager()
 
