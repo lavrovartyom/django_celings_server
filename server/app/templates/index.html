@@ -33,12 +33,12 @@
 </div>
 
 <div class="container mt-5 mb-1">
-    <h2>Примеры наших работ</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-3">
+    <h2 class="mb-3">Наши работы</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-3">
         {% for example in examples %}
         <div class="col">
             <div class="card shadow mb-4 bg-body rounded">
-                <img alt="{{ example.ceiling_type }}" class="card-img-top img-fluid" src="{{ example.image.url }}" style="height: 200px; object-fit: cover;"/>
+                <img alt="{{ example.ceiling_type }}" class="card-img-top img-fluid" src="{{ example.image.url }}" style="height: 300px; object-fit: cover;"/>
                 <div class="card-body">
                     <h5 class="card-title">{{ example.ceiling_type }}</h5>
                     <p class="card-text">{{ example.description }}</p>
@@ -49,7 +49,7 @@
     </div>
 </div>
 
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5" id="form_container">
     <h2 class="mb-3">Записаться на замер</h2>
     <form id="form" method="POST" action=".">
         {% csrf_token %}
@@ -58,7 +58,7 @@
 </div>
 
 <div class="modal" tabindex="-1" id="successModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Ваша заявка была успешно отправлена.</h5>
